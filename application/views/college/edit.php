@@ -86,53 +86,38 @@
 	<body>
 		<div class="container">
 			<div class="row">
-			<div class="col-12 mb-3 text-right">
-				<a href="<?=base_url('college/create')?>" class="btn btn-primary">Create staff details</a>
-			</div>
 				<div class="col-12">
 					<div class="card">
 						<div class="card-body text-center">
 							<h5 class="card-title m-b-0"><?=$title?></h5>
 						
+						<form method="post" action="<?=base_url('college/updatecollege/'.$college->id)?>">
+							<div class="form-group">
+								<input type="text" class="form-control" name="name" placeholder="name" value="<?=$college->name?>" required="required">
+							</div>
+							<div class="form-group">
+								<input class="form-control" name="date"  placeholder="Date of joining" required="required"><?=$college->date?>
+							</div>
+                            <div class="form-group">
+								<input type="text" class="form-control" name="address" placeholder="address" value="<?=$college->address?>" required="required">
+							</div>
+                            <div class="form-group">
+								<input type="text" class="form-control" name="department" placeholder="department" value="<?=$college->department?>" required="required">
+							</div>
+                            <div class="form-group">
+								<input type="text" class="form-control" name="phonenumber" placeholder="phonenumber" value="<?=$college->phonenumber?>" required="required">
+							</div>
+                            <div class="form-group">
+								<input type="text" class="form-control" name="gender" placeholder="gender" value="<?=$college->gender?>" required="required">
+							</div>
+                            <div class="form-group">
+								<input type="text" class="form-control" name="bgroup" placeholder="bgroup" value="<?=$college->bgroup?>" required="required">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Save</button>
+							</div>
+						</form>
 						</div>
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Id</th>
-									<th scope="col">Name</th>
-									<th scope="col">Date of Joining</th>
-									<th scope="col">Address</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Phonenumber</th>
-                                    <th scope="col">Gender</th>
-                                    <th scope="col">Blood group</th>
-								
-								</tr>
-							</thead>
-							<tbody>
-
-								<?php 
-								if(count($college)>0){
-									foreach($college as $colleges){ ?>
-									<tr>
-										<th scope="row"><?=$college->id?></th>
-										<td><?=$colleges->name?></td>
-										<td><?=$colleges->date?></td>
-                                        <td><?=$colleges->address?></td>
-                                        <td><?=$colleges->department?></td>
-                                        <td><?=$colleges->phonenumber?></td>
-                                        <td><?=$colleges->gender?></td>
-                                        <td><?=$colleges->bgroup?></td>
-										<td><a href="<?=base_url('college/edit/'.$colleges->id)?>">Edit</a></td>
-										<td><a onclick="confirm('Are you sure want to delete?')" href="<?=base_url('college/delete/'.$college->id)?>">Delete</a></td>
-									</tr>
-									<?php 
-									}
-								}else{ ?>
-								<tr><td>No Staff lists</td></tr>
-								<?php } ?>
-							</tbody>
-						</table>
 					</div>
 				</div>
 			</div>
